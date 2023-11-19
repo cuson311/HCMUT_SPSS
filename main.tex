@@ -1,0 +1,352 @@
+\documentclass[a4paper]{article}
+\usepackage{adjustbox}
+\usepackage{vntex}
+\usepackage{xltabular}
+\usepackage[export]{adjustbox}
+\usepackage[english,vietnam]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[utf8]{vietnam}
+\usepackage[utf8]{inputenc}
+\usepackage{a4wide,amssymb,epsfig,latexsym,array,hhline,fancyhdr}
+\usepackage[normalem]{ulem}
+\usepackage{soul}
+\usepackage[makeroom]{cancel}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{multicol,longtable,amscd}
+\usepackage{diagbox}
+\usepackage{booktabs}
+\usepackage{alltt}
+\usepackage[framemethod=tikz]{mdframed}
+\usepackage{float}
+\usepackage{caption,subcaption}
+\usepackage{lastpage}
+\usepackage[lined,boxed,commentsnumbered]{algorithm2e}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{tabularx, caption}
+\usepackage{multirow}
+\usepackage{multicol}
+\usepackage{rotating}
+\usepackage{graphics}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{epsfig}
+\usepackage{tikz}
+\usepackage{listings}
+\usetikzlibrary{arrows,snakes,backgrounds}
+\usepackage[unicode]{hyperref}
+\usepackage{tabto}
+\hypersetup{urlcolor=blue,linkcolor=black,citecolor=black,colorlinks=true} 
+\usepackage{pstcol}
+\usepackage[normalem]{ulem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{ragged2e}
+\usepackage{indentfirst}
+\setlength\parindent{24pt}
+
+\newtheorem{theorem}{{\bf Định lý}}
+\newtheorem{property}{{\bf Tính chất}}
+\newtheorem{proposition}{{\bf Mệnh đề}}
+\newtheorem{corollary}[proposition]{{\bf Hệ quả}}
+\newtheorem{lemma}[proposition]{{\bf Bổ đề}}
+\newtheorem{exer}{\bf Bài toán}
+\theoremstyle{definition}
+
+\def\thesislayout {	% A4: 210 × 297
+    \geometry {
+        a4paper,
+        total={160mm,240mm},  % fix over page
+        left=25mm,
+        top=30mm,
+    }
+}
+\thesislayout
+
+\definecolor{background}{rgb}{0.95,0.95,0.92}
+
+\lstset{language=R,
+    basicstyle=\small\ttfamily,
+    backgroundcolor = \color{background},
+    stringstyle=\color{teal},
+    otherkeywords={0,1,2,3,4,5,6,7,8,9},
+    morekeywords={TRUE,FALSE},
+    deletekeywords={data,frame,length,as,character},
+    keywordstyle=\color{blue},
+    commentstyle=\color{teal},
+    breaklines = true,
+    showstringspaces = false
+}
+
+\usepackage{fancyhdr}
+\setlength{\headheight}{40pt}
+\pagestyle{fancy}
+\fancyhead{} %clear all header fields
+\fancyhead[L]{
+ \begin{tabular}{rl}
+    \begin{picture}(25,15)(0,0)
+    \put(0,-8){\includegraphics[width=10mm, height=10mm]{Images/logo_hcmut.png}}
+    %\put(0,-8){\epsfig{width=10mm,figure=hcmut.eps}}
+   \end{picture}&
+	%\includegraphics[width=8mm, height=8mm]{hcmut.png} & %
+	\begin{tabular}{l}
+		\textbf{\bf \ttfamily Trường Đại học Bách Khoa - Đại học Quốc gia TP.Hồ Chí Minh}\\
+		\textbf{\bf \ttfamily Khoa Khoa học và Kỹ thuật Máy tính}
+	\end{tabular} 	
+ \end{tabular}
+}
+\fancyhead[R]{
+	\begin{tabular}{l}
+		\tiny \bf \\
+		\tiny \bf 
+	\end{tabular}  }
+\fancyfoot{} % clear all footer fields
+\fancyfoot[L]{\scriptsize \ttfamily Bài tập lớn môn Công nghệ phần mềm (CO3001) - Năm học 2023 - 2024}
+\fancyfoot[R]{\scriptsize \ttfamily Trang {\thepage}/\pageref{LastPage}}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0.3pt}
+
+
+%%%
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{3}
+\makeatletter
+\newcounter {subsubsubsection}[subsubsection]
+\renewcommand\thesubsubsubsection{\thesubsubsection .\@alph\c@subsubsubsection}
+\newcommand\subsubsubsection{\@startsection{subsubsubsection}{4}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\normalfont\normalsize\bfseries}}
+\newcommand*\l@subsubsubsection{\@dottedtocline{3}{10.0em}{4.1em}}
+\newcommand*{\subsubsubsectionmark}[1]{}
+\makeatother
+
+\everymath{\color{black}}%make in-line maths symbols blue to read/check easily
+
+\sloppy
+\captionsetup[figure]{labelfont={small,bf},textfont={small,it},belowskip=-1pt,aboveskip=-9pt}
+%space remove between caption, figure, and text
+\captionsetup[table]{labelfont={small,bf},textfont={small,it},belowskip=-1pt,aboveskip=7pt}
+%space remove between caption, table, and text
+
+%\floatplacement{figure}{H}%forced here float placement automatically for figures
+%\floatplacement{table}{H}%forced here float placement automatically for table
+%the following settings (11 lines) are to remove white space before or after the figures and tables
+%\setcounter{topnumber}{2}
+%\setcounter{bottomnumber}{2}
+%\setcounter{totalnumber}{4}
+%\renewcommand{\topfraction}{0.85}
+%\renewcommand{\bottomfraction}{0.85}
+%\renewcommand{\textfraction}{0.15}
+%\renewcommand{\floatpagefraction}{0.8}
+%\renewcommand{\textfraction}{0.1}
+\setlength{\floatsep}{5pt plus 2pt minus 2pt}
+\setlength{\textfloatsep}{5pt plus 2pt minus 2pt}
+\setlength{\intextsep}{10pt plus 2pt minus 2pt}
+
+\thesislayout
+
+\begin{document}
+
+\begin{titlepage}
+\begin{center}
+ĐẠI HỌC QUỐC GIA THÀNH PHỐ HỒ CHÍ MINH \\
+TRƯỜNG ĐẠI HỌC BÁCH KHOA \\
+KHOA KHOA HỌC VÀ KỸ THUẬT MÁY TÍNH \\
+\end{center}
+
+\vspace{1cm}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[width=4cm]{Images/logo_hcmut.png}
+\end{center}
+\end{figure}
+
+\begin{center}
+    \begin{tabular}{c}
+        \multicolumn{1}{c}{\textbf{{\huge \color{black} CÔNG NGHỆ PHẦN MỀM (CO3001)}}}\\
+        ~~ \\
+        \textcolor{black}{\textbf{\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill}}
+        \\
+                   
+                    \textcolor{black}{\textbf{{\huge BÁO CÁO BÀI TẬP LỚN}}}\\\\
+                    \textcolor{black}{\textbf{{\large LỚP L01 - NHÓM 12}}}
+        ~~\\
+        \textcolor{black}{\textbf{\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill\hrulefill}}
+        \\
+    \end{tabular}
+\end{center}
+
+\begin{flushleft}
+    \fontsize{14pt}{17pt}\selectfont  
+    \textbf{\textsl{\textcolor{black}{\uline{ĐỀ TÀI:}}}}
+\end{flushleft}
+\begin{center}
+    \fontsize{18pt}{17pt}\selectfont 
+    \textbf{\textrm{A SMART PRINTING SERVICE}} 
+    
+    \vspace{12pt}
+    
+    \textbf{\textrm{FOR STUDENTS AT HCMUT}}
+
+\end{center}
+
+\begin{center}
+        \vspace{15pt}
+\textbf{GV hướng dẫn: Lê Đình Thuận}
+\end{center}
+
+\vspace{10pt}
+\textbf{Nhóm sinh viên thực hiện:}
+
+\definecolor{myblack}{RGB}{0,0,0}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}m{#1}}
+\renewcommand{\arraystretch}{2}
+\begin{table}[H]
+\centering
+\arrayrulecolor{black}
+\begin{tabular}{| C{0.75cm} | C{5cm} | C{2cm} |} 
+\hline
+\textcolor{myblack}{\textbf{STT}} & \textcolor{myblack}{\textbf{Họ và tên}} & \textcolor{myblack}{\textbf{MSSV}} \\ 
+\hline
+\textcolor{myblack}{1} & \textcolor{myblack}{Đinh Vũ Hà} & \textcolor{myblack}{2113269} \\ \hline
+\textcolor{myblack}{2} & \textcolor{myblack}{Nguyễn Hoài Khang} & \textcolor{myblack}{2111453} \\ \hline
+\textcolor{myblack}{3} & \textcolor{myblack}{Nguyễn Quang Minh} & \textcolor{myblack}{2111753} \\ \hline
+\textcolor{myblack}{4} & \textcolor{myblack}{Từ Mai Thế Nhân} & \textcolor{myblack}{2114277} \\ \hline
+\textcolor{myblack}{5} & \textcolor{myblack}{Cù Hoàng Nguyễn Sơn} & \textcolor{myblack}{2112185} \\ \hline
+\textcolor{myblack}{6} & \textcolor{myblack}{Đinh Đào Quốc Thịnh} & \textcolor{myblack}{2012107} \\ \hline
+\textcolor{myblack}{7} & \textcolor{myblack}{Lê Hoàng Anh Vũ} & \textcolor{myblack}{2115319} \\
+\hline
+\end{tabular}
+\end{table}
+
+
+
+\end{titlepage}
+
+
+%\thispagestyle{empty}
+
+\newpage
+\doublespacing
+\tableofcontents
+\onehalfspacing
+\newpage
+\section{TASK 1: REQUIREMENT ELICITATION}
+\subsection{Describe the domain context of a smart printing service for students at HCMUT. Who are relevant stakeholders? What are their current needs? In your opinion, what benefits HCMUT\_SSPS will be for each stakeholder?}
+\subsubsection{Bối cảnh của dự án}
+Trong thời đại ngày này, giáo dục là quốc sách hàng đầu cho sự phát triển của đất nước. Trong đó, để có thể học tập một cách hiệu quả, thì các tài liệu luôn là những nhân tố không thể thiếu đối với mỗi học sinh, sinh viên. Vì vậy, nhu cầu in tài liệu để học tập đang ngày một tăng lên. Trong khuôn viên nhà trường, với số lượng sinh viên lớn, để có thể  đáp ứng nhu cầu in tài liệu học tập cũng như tiết kiệm thời gian quý báu cho các sinh viên, hệ thống dịch vụ in ấn thông minh dành cho sinh viên tại Trường Đại học Bách Khoa TP.HCM (HCMUT\_SSPS) cần được ra đời nhằm đáp ứng những nhu cầu thiết thực này. \par
+Chương trình dịch vụ in ấn thông minh dành cho sinh viên tại Trường Đại học Bách Khoa TP.HCM (HCMUT\_SSPS) là một hệ thống cho phép sinh viên in tài liệu một cách thuận tiện và hiệu quả. Hệ thống bao gồm các máy in xung quanh khuôn viên trường và ứng dụng web hoặc ứng dụng di động để sử dụng các dịch vụ tiện ích liên quan của hệ thống. Sinh viên có thể tải lên tệp tài liệu lên hệ thống, chọn máy in và chỉ định các thuộc tính in. Phòng quản lí dịch vụ in ấn sinh viên (Student Printing Service Officer SPSO), cũng đồng thời có thể quản lí các máy in, kiểm tra lịch sử hoạt động, xuất báo cáo và nhiều các chức năng khác. Ngoài ra, để tăng tính bảo mật, cũng như đảm bảo quyền lợi cho sinh viên Bách Khoa, tài khoản muốn in tài liệu cần phải được xác thực bằng dịch vụ xác thực HCMUT\_SSO, tức là chỉ sinh viên Bách Khoa mới có quyền sử dụng dịch vụ in ấn tại khuôn viên nhà trường, tránh tình trạng người ngoài tiện đường vào trường in ấn gây mất thời gian cho sinh viên, cũng như tăng tính bảo mật cho hệ thống. 
+\subsubsection{Các bên liên quan (stakeholders)}
+Các bên liên quan có liên quan của hệ thống và những điều họ cần bao gồm:\par
+ Sinh viên: Sinh viên cần một dịch vụ in ấn thuận tiện và hiệu quả trong khuôn viên trường. Đồng thời cần có thể in tài liệu của mình một cách nhanh chóng và dễ dàng, cũng như cần có thể theo dõi lịch sử in ấn của mình.Tài liệu khi được in ra cần được đảm bảo chính xác nhất có thể. In ấn an toàn và bảo mật thông tin, đảm bảo tài liệu được bảo vệ. Ngoài ra, sinh viên cần một hệ thống ít lỗi, dễ thao tác, thân thiện với người dùng. \par
+ Cán bộ Quản lý Dịch vụ In ấn Sinh viên (SPSO): SPSO chịu trách nhiệm quản lý dịch vụ in ấn và đảm bảo nó hoạt động trơn tru. Họ cần các công cụ để giám sát và kiểm soát khả dụng máy in, theo dõi lịch sử in ấn và cấu hình cài đặt hệ thống.\par
+Đơn vị xác thực HCMUT\_SSO (hệ thống xác thực sinh viên Bách Khoa): Để đảm bảo quyền lợi, tính bảo mật cho sinh viên Bách Khoa, hệ thống xác thực cần phải đảm bảo rằng chỉ khi có tài khoản được xác thực trong nội bộ Trường Đại học Bách Khoa TP.HCM mới được sử dụng phần mềm. Do đó, hệ thống xác thực cần biết được MSSV, họ và tên sinh viên khi sử dụng phần mềm. \par
+Đơn vị quản lý BKPay: Sinh viên nếu cần in tài liệu nhiều hơn so với mức bình thường thì cần phải trả thêm 1 khoản qua BKPay để có thể tiếp tục in. BKPay cần biết được số lượng tài liệu cần được in thêm từ sinh viên để có thể cho ra hoá đơn.\par
+Nhân viên trực máy in: Mỗi máy in phải cần có ít nhất một người trực để thực hiện các thao tác in ấn. Nhân viên trực máy in cần biết được tài liệu cần được in, số lượng bản,các trang in trong tài liệu, họ tên, mssv của sinh viên sử dụng dịch vụ để có thể thực hiện việc in một cách chính xác, nhanh chóng.
+\subsubsection{Lợi ích của các bên liên quan tới hệ thống}
+Theo nhóm em, một số lợi ích có thể có của các bên liên quan về hệ thống này: \\
+\begin{table}[H]
+\centering
+\arrayrulecolor{black}
+\begin{tabularx}{\textwidth}{| c | X |}
+\hline
+\multicolumn{1}{|c|}{\textbf{Các bên liên quan}} & \multicolumn{1}{c|}{\textbf{Lợi ích}}  \\
+\hline
+Sinh viên & 
+\textbullet~In tài liệu một cách nhanh chóng và dễ dàng, không cần phải xếp hàng dài chờ đợi.  \\
+& \textbullet~Sinh viên có thể theo dõi lịch sử in ấn của mình để quản lý chi phí.  \\
+& 
+\textbullet~In tài liệu từ bất kỳ máy in nào trong khuôn viên trường, thuận tiện cho giờ học cũng như vị trí học.  \\
+& \textbullet~Sinh viên không cần lo lắng về tính bảo mật của tài khoản.   \\ 
+\hline
+SPSO & 
+\textbullet~Dễ dàng giám sát và kiểm soát khả dụng máy in.  \\
+& \textbullet~Có thể tạo báo cáo về việc sử dụng in ấn và chi phí để hỗ trợ ra quyết định.  \\
+& 
+\textbullet~Quản lý các cài đặt hệ thống một cách dễ dàng và tiện lợi.  \\
+& \textbullet~Dễ dàng nâng cấp hay bảo trì hệ thống.   \\ 
+\hline
+Đơn vị quản lý BKPay & 
+\textbullet~Dễ dàng hơn trong việc tính toán cho ra hoá đơn.  \\
+& \textbullet~Tăng thêm 1 lượng thu nhập từ việc in thêm của học sinh.  \\ 
+\hline
+Đơn vị xác thực SSO  & 
+\textbullet~Dễ dàng quản lý được ai là người in tài liệu.\\ 
+
+\hline
+Nhân viên trực máy in & 
+\textbullet~Được nhận thêm công việc có lương, môi trường làm việc lành mạnh.  \\
+& \textbullet~Thực hiện việc in tài liệu cho sinh viên/giảng viên giờ đây đã dễ dàng và chính xác hơn nhiều so với trước khi có hệ thống.   \\ 
+& 
+\textbullet~Tiếp kiệm được thời gian hơn cho người trực máy in. \\ 
+\hline
+\end{tabularx}
+
+\end{table}
+\subsection{Describe all functional and non-functional requirements that can be inferred from the project description.}
+\begin{xltabular}{\textwidth}{| c | X | X |}
+\hline
+\multicolumn{1}{|c|}{\textbf{Các bên liên quan}} & \multicolumn{1}{c|}{\textbf{Yêu cầu chức năng}} & \multicolumn{1}{c|}{\textbf{Yêu cầu phi chức năng}} \\
+\hline
+Sinh viên & 
+\textbullet~Tải lên và chọn tệp cần in qua trang web hoặc ứng dụng di động. & \textbullet~Giao diện dễ sử dụng. \\
+& \textbullet~Lựa chọn máy in và tuỳ chỉnh các thuộc tính in khác như khổ giấy, số trang, in một mặt/hai mặt, số bản sao. &  \textbullet~Xử lý nhanh chóng và ổn định khi có nhiều người dùng cùng lúc (mỗi sinh viên không phải đợi quá 15 phút để được thực hiện in). \\
+& 
+\textbullet~Kiểm tra lịch sử in bao gồm thông tin sinh viên, máy in, tên tệp, thời gian bắt đầu và kết thúc in, số trang cho từng khổ giấy. & \\
+& 
+\textbullet~Thanh toán qua BKPAY. &  \\
+\hline
+SPSO & 
+\textbullet~Quản lý máy in: thêm máy in, bật/tắt máy in trong hệ thống. & \textbullet~Tính năng báo cáo phải sẵn có 24/7 và cung cấp thông tin rõ ràng và ngắn gọn để hỗ trợ ra quyết định. \\
+& \textbullet~Tuỳ chỉnh cấu hình hệ thống: cài đặt loại tệp được phép và số lượng trang mặc định cho sinh viên trong mỗi học kỳ. &  \textbullet~Báo cáo hệ thống phải đảm bảo độ chính xác của dữ liệu và có khả năng xuất báo cáo ở định dạng chuẩn như PDF, Excel. \\
+& 
+\textbullet~Xem lịch sử in ấn (nhật ký): xem lịch sử in của tất cả học sinh hoặc một học sinh trong một khoảng thời gian (từ ngày đến hiện tại) và cho phép lựa chọn máy in. & \textbullet~Hệ thống phải được vận hành trơn tru, nhất là những lúc cao điểm (nhiều sinh viên cần in tài liệu).\\
+& 
+\textbullet~Xem báo cáo: xem báo cáo thống kê sử dụng tài nguyên, mức tiêu thụ giấy và chi phí liên quan. &  \\
+& 
+\textbullet~Quản lý vận hành hệ thống. &  \\
+\hline
+Đơn vị quản lý BKPay& 
+\textbullet~Tính hoá đơn, in, thanh toán hoá đơn. & \textbullet~Thời gian giao dịch nhanh chóng (phản hồi không quá 5 phút). \\
+& \textbullet~Xem lịch sử giao dịch, thông báo giao dịch thành công. &  \textbullet~Giao dịch đảm bảo chính xác. \\
+& 
+\textbullet~Trợ giúp, chăm sóc khách hàng khi có sự cố. & \\
+\hline
+Đơn vị xác thực SSO & 
+\textbullet~Xác thực người dùng: Hệ thống phải có khả năng xác thực người dùng và kiểm soát quyền truy cập của họ. & \textbullet~Hiệu suất cao và phản hồi nhanh: Tích hợp SSO phải đảm bảo hiệu suất và phản hồi nhanh để giảm độ trễ đăng nhập và nâng cao trải nghiệm người dùng (độ trễ dưới 1 giây, góp phần cho hệ thống hoạt động mượt mà). \\
+& \textbullet~Tích hợp và đồng bộ hoá tài khoản: Tích hợp với SSPS để đồng bộ hoá tài khoản sinh viên với tài khoản dịch vụ. &  \textbullet~Bảo mật dữ liệu: Việc tích hợp SSO với SSPS phải tuân thủ các biện pháp bảo mật nghiêm ngặt để đảm bảo tính bảo mật và sẵn có của dữ liệu xác thực và thông tin nhạy cảm. \\
+& 
+\textbullet~Kiểm soát vai trò người dùng: Quản lý vai trò người dùng (sinh viên, giảng viên, quản trị hệ thống/người dùng khác) và cấp quyền truy cập phù hợp. & \textbullet~Khả năng mở rộng: Hệ thống SSO phải được thiết kế để xử lý số lượng người dùng và khả năng tải hệ thống tăng lên, đảm bảo hiệu suất không giảm (Trường Đại học Bách Khoa có khoảng 19.000 sinh viên chính quy, 4.000 học viên cao học, nghiên cứu sinh, có gần 1.000 giảng viên và sẽ tăng nhanh hơn nữa).\\
+& 
+\textbullet~Ghi nhật ký và kiểm tra: Ghi nhật ký và kiểm tra các hoạt động xác thực và truy cập của người dùng trong SSPS để hỗ trợ giám sát và khắc phục sự cố bảo mật. & \textbullet~Tích hợp với hệ thống khác: Tích hợp SSO phải tương thích và cho phép trao đổi dữ liệu với các hệ thống và dịch vụ khác của trường đại học. \\
+
+\hline
+Nhân viên trực máy in & 
+\textbullet~Xem thông tin tài liệu, các trang cần thực hiện việc in ấn. & \textbullet~Tiếp nhận yêu cầu nhanh (nhân viên cần phải thực hiện việc in ấn nghiêm túc ngay sau khi nhận được yêu cầu, thường không quá 5 phút). \\
+& \textbullet~Thông tin về sinh viên: tên sinh viên, MSSV của sinh viên yêu cầu dịch vụ. &  \textbullet~Đảm bảo việc in tài liệu thực hiện một cách chính xác, đúng máy (nếu có lỗi phải trợ giúp khách hàng). \\
+& 
+\textbullet~Xem vị trí máy in sinh viên yêu cầu in tài liệu. & \textbullet~Đảm bảo việc in chính xác, đúng tài liệu và các trang, số lượng mà sinh viên yêu cầu.\\
+& 
+\textbullet~Hiển thị thông tin tài liệu đã được in xong. & \textbullet~Đảm bảo chuyển tài liệu đã in cho đúng người yêu cầu, đúng vị trí mà sinh viên mong muốn (đảm bảo chính xác, hiệu suất cao, không bắt sinh viên chờ lâu quá 15 phút).\\
+&  & \textbullet~Cần sẵn tại phòng máy đủ số lượng giấy a4, a3,...và mực in và thay mực khi cần (9.000 sinh viên chính quy, 4.000 học viên cao học, nghiên cứu sinh), cần ước tính được số lượng giấy và mực mỗi ngày để đáp ứng nhu cầu khách hàng.\\
+
+
+\hline
+\end{xltabular}
+\include{use-case}
+\include{system-modeling}
+\include{architecture}
+\section{TASK 4: IMPLEMENTATION - SPRINT 1}
+\newpage
+\section{TASK 5: IMPLEMENTATION - SPRINT 2}
+\newpage
+\section{REFERENCES}
+
+\end{document}
