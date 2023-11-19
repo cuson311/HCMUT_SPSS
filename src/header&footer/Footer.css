@@ -1,0 +1,50 @@
+.printer_footer {
+  width: 100%;
+  height: 270px;
+  background-color: #0d5ca1b0;
+  display: flex;
+  padding: 50px 100px;
+  background: linear-gradient(rgba(13, 92, 161, 0.7), rgba(13, 92, 161, 0.7)),
+    url("https://e-learning.hcmut.edu.vn/theme/image.php/boost/theme/1685588876/hcmut2");
+  background-size: cover;
+}
+.footer_logo h3 {
+  color: white;
+}
+.footer_logo img {
+  margin-top: 20px;
+}
+.footer_link {
+  margin-left: auto;
+  margin-right: auto;
+  color: white;
+}
+.footer_link a {
+  display: block;
+  color: white;
+  text-decoration: none;
+  margin-top: 10px;
+}
+.footer_info h3 {
+  color: white;
+}
+.footer_info p {
+  color: white;
+  margin-top: 10px;
+}
+.footer_info img {
+  filter: invert(100%);
+}
+.phone_icon {
+  width: 15px;
+  height: 15px;
+  padding-top: 3px;
+}
+.footer_copyright {
+  width: 100%;
+  background-color: #164399;
+  color: white;
+  height: 60px;
+  text-align: center;
+  padding-top: 20px;
+}

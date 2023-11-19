@@ -1,0 +1,59 @@
+.search-bar{
+    display: flex;
+    padding: 20px;
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    align-items: center; /* Căn giữa theo chiều dọc */
+  }
+
+  .search-icon {
+    font-size: 20px;
+    margin-right: 8px;
+  }
+  input {
+    border: none;
+    width: 500px;
+  }
+  .add-button-blue {
+    background-color: #3498db; /* Màu xanh dương */
+    color: white;
+    padding: 9px;
+    border: none;
+    width: 130px;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 10px;
+  }
+  .data-table {
+    margin: 1rem auto; /* Đưa bảng vào giữa trang */
+    border-collapse: collapse;
+    width: 80%;
+  }
+  
+  .data-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  .data-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    background-color: #f2f2f2;
+  }
+  
+  /* src/App.css */
+  .rectangle {
+    width: fit-content;
+    height: 50px;
+
+
+    text-align: center;
+    line-height: 30px;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin: auto; /* Canh giữa hình chữ nhật trong ô */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }

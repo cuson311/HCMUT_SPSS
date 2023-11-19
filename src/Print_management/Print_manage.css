@@ -1,0 +1,124 @@
+.print_manager_search {
+  width: 90%;
+  margin: 20px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.print_manager_search_input {
+  border-bottom: 1px solid black;
+  outline: none;
+  margin-left: 10px;
+  width: 300px;
+}
+.print_manager_search_button {
+  background-color: transparent;
+  cursor: pointer;
+}
+.search_wrapper {
+  border: 1px solid black;
+  border-radius: 20px;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+}
+.add_print_button {
+  background-color: #2e86c1;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.printer_container {
+  width: 90%;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 3%;
+  justify-content: center;
+  row-gap: 20px;
+}
+.printer_card {
+  width: 15%;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.printer_img {
+  width: 100%;
+  height: 120px;
+  border-bottom: 1px solid black;
+  padding: 10px;
+}
+.card_text {
+  display: block;
+  font-size: 12px;
+  margin: 5px 5px;
+}
+.switch_wrap {
+  text-align: center;
+}
+.switch_button {
+  scale: 0.7;
+}
+.add_printer_model {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Màu nền với độ trong suốt */
+  z-index: 9999; /* Đảm bảo nằm trên tất cả các phần tử khác */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.model_container {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 30px;
+}
+.model_quit {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+.modal_wrapper_add {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.modal_wrapper_add h3 {
+  text-align: center;
+  margin-top: 5px;
+}
+.modal_wrapper_input {
+  margin-top: 15px;
+  margin-left: 80px;
+  display: flex;
+  align-items: center;
+}
+.modal_wrapper_input input {
+  width: 50%;
+  height: 30px;
+  border-bottom: 1px solid black;
+  outline: none;
+  margin-left: 20px;
+}
+.modal_wrapper_input_dropdown {
+  display: inline-block;
+  margin-left: 20px;
+}
+.add_more {
+  margin-left: 150px;
+  margin-top: 20px;
+  cursor: pointer;
+  width: 170px;
+}

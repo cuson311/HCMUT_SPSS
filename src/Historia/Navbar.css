@@ -1,0 +1,32 @@
+/* src/Navbar.css */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white; /* Đổi màu nền thành trắng */
+  padding: 1rem;
+  color: rgb(0, 0, 0); /* Đổi màu chữ thành đen hoặc một màu phù hợp */
+  border-bottom: 2px solid #3498db; /* Thêm đường gạch dưới */
+}
+
+
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
+.nav-links li {
+  margin-right: 1rem;
+}
+
+.nav-links a {
+  font-size: 1.2em;
+  font-weight: 700;
+  text-decoration: none;
+  color: black; 
+}
+
+.nav-links a:hover {
+  border-bottom: 5px solid blue; 
+  padding-bottom: 1px; 
+}
