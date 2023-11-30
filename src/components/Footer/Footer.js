@@ -1,9 +1,9 @@
 import React from "react";
-import map_icon from "../Print_management/asset/map.png";
-import phone_p_icon from "../Print_management/asset/calling.png";
-import mail_icon from "../Print_management/asset/email.png";
+import map_icon from "../../assets/image/map.png";
+import phone_p_icon from "../../assets/image/calling.png";
+import mail_icon from "../../assets/image/email.png";
 import "./Footer.css";
-
+import logo from '../../assets/image/LogoBKSolid.png'
 const Footer = () => {
   return (
     <>
@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="footer_logo">
           <h3>SMART PRINTING SERVICE</h3>
           <img
-            src="https://e-learning.hcmut.edu.vn/theme/boost/pix/logo.png"
+            src={logo}
             alt="logo"
             width={100}
             height={100}

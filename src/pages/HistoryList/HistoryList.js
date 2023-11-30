@@ -1,20 +1,11 @@
 import React, {useState} from 'react';
 import './History.css';
-function History() {
+import { Input } from "@material-tailwind/react";
+import {historyData} from '../../data/HistoryData'
+
+export default function HistoryList() {
     const [state, setState] = useState(
-        {historyList: [{ID:'1', stamp: '2023-11-15 T20:35:02' , printerID: 'HP PhotoSmart 7520 ' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'HP PhotoSmart 7520 ' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Canon Pixma MX922' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Canon Pixma MX922' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Canon Pixma MX922' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Epson Workforce WF-3640' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Epson Workforce WF-3640' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Epson Workforce WF-3640' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Epson Workforce WF-3640' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Brother MFC-J480DW ' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Brother MFC-J480DW ' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',},
-        {ID:'1',stamp: '2023-11-15 T20:35:02' , printerID: 'Brother MFC-J480DW ' , fileName: 'Capstone_Project_hk231_2023_v3', pageNums :'2',}
-    ], input:''})
+        {historyList: historyData, input:''})
     function handleOnchange(event) {
         event.preventDefault();
         console.log(event.target.value)
@@ -23,10 +14,8 @@ function History() {
 
     return (
         <div className="History">
-            
-            <div className="search-bar">
-            <input type="text" placeholder="Nhập tên file..." onChange={(event) => handleOnchange(event)}/>
-            <button className="add-button-blue">Xem chi tiết</button>
+            <div className="search-bar w-6/12 mx-auto">
+              <Input label="Tìm kiếm" className='h-full' onChange={(event) => handleOnchange(event)}/>
             </div>
             {<div className='file-table-wrapper'>
                     <table className='data-table'>
@@ -80,4 +69,3 @@ function History() {
 
     );
 }
-export default History;
