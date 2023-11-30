@@ -1,7 +1,5 @@
 import React from "react";
 import "./Print_manage.css";
-import Header from "../header&footer/Header";
-import Footer from "../header&footer/Footer";
 import search_icon from "./asset/search_icon.png";
 import PrinterCard from "./Printer_card";
 import { useState, useEffect } from "react";
@@ -73,7 +71,7 @@ const PrintManage = () => {
   useEffect(() => {}, [data]);
   return (
     <>
-      <Header />
+
       <div className="print_manager_search">
         <div className="search_wrapper">
           <input
@@ -96,7 +94,7 @@ const PrintManage = () => {
           <div>NOT FOUND</div>
         )}
       </div>
-      <Footer />
+
       {showModal && (
         <div className="add_printer_model">
           <div className="model_container">
