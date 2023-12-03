@@ -1,4 +1,3 @@
-import "./App.css";
 
 import Header from './components/Header/Header'
 import Homepage from './pages/Homepage/Homepage'
@@ -8,6 +7,10 @@ import UploadFile from './pages/UploadFile/UploadFile'
 import PrintingFile from './pages/PrintingFile/PrintingFile'
 import ManagePrinter from './pages/ManagePrinter/Print_manage'
 import Footer from "./components/Footer/Footer";
+import Login from './Login/login';
+import SelectMember from "./Login/selectmember";
+import 'bootstrap/dist/css/bootstrap.min.css'; 
+
 
 import { Routes, Route } from "react-router-dom";
 
