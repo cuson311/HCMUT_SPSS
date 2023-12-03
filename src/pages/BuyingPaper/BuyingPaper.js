@@ -1,5 +1,11 @@
-export default function BuyingPaper () {
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
+export default function BuyingPaper (props) {
     return (
-        <h1>BUYING PAPER</h1>
+        <>
+            <Header value={props}/>
+            <h1>BUYING PAPER</h1>
+            <Footer/>
+        </>
     )
 }

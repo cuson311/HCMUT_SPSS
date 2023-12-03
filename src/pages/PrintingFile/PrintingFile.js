@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
-const PrintingFile = () => {
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+const PrintingFile = (props) => {
   const [file, setFile] = useState(null);
 
   const handleFileChange = (event) => {
@@ -9,7 +10,9 @@ const PrintingFile = () => {
   };
 
   return (
-    <>
+    <> 
+    <Header value={props}/>
+      
         <div className="grid grid-cols-3 gap-4">
             <div className="col-span-1">Column 1</div>
             <div className="col-span-1">
@@ -29,6 +32,7 @@ const PrintingFile = () => {
             </div>
             <div className="col-span-1">Column 3</div>
         </div>
+        <Footer/>
     </>
   );
 };

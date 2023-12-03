@@ -6,8 +6,10 @@ import { useState, useEffect } from "react";
 import quit_logo from "./asset/quit_icon.png";
 import ReactDropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import Header from "../../components/Header/Header";
+import Footer from "../../components/Footer/Footer";
 
-const PrintManage = () => {
+const PrintManage = (props) => {
   const printer = require("./printer_data");
   const [data, setData] = useState(printer.get_array());
   const [showModal, setShowModal] = useState(false);
@@ -71,7 +73,7 @@ const PrintManage = () => {
   useEffect(() => {}, [data]);
   return (
     <>
-
+      <Header value={props}/>
       <div className="print_manager_search">
         <div className="search_wrapper">
           <input
@@ -189,6 +191,7 @@ const PrintManage = () => {
           </div>
         </div>
       )}
+      <Footer/>
     </>
   );
 };

@@ -7,24 +7,26 @@ import UploadFile from './pages/UploadFile/UploadFile'
 import PrintingFile from './pages/PrintingFile/PrintingFile'
 import ManagePrinter from './pages/ManagePrinter/Print_manage'
 import Footer from "./components/Footer/Footer";
-
-
+import SelectMember from "./pages/Login/selectmember";
+import {StateLogin} from './data/StateLogin'
+import Login from './pages/Login/login';
 import { Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <>
-      <Header role='admin' />
+      {/* <Login/> */}
+      {console.log('App',StateLogin)}
       <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/LichSuIn" element={<HistoryList />} />
-        <Route path="/TaiTaiLieu" element={<UploadFile />} />
-        <Route path="/InTaiLieu" element={<PrintingFile />} />
-        <Route path="/MuaGiayIn" element={<BuyingPaper />} />
-        <Route path="/QuanLiMayIn" element={<ManagePrinter />} />
+        <Route path="/" element={<Homepage value={StateLogin}/>} />
+        <Route path="/LichSuIn" element={<HistoryList value={StateLogin} />} />
+        <Route path="/ChonDoiTuong" element={<SelectMember value={StateLogin} />} />
+        <Route path="/DangNhap" element={<Login value={StateLogin} />} />
+        <Route path="/TaiTaiLieu" element={<UploadFile value={StateLogin} />} />
+        <Route path="/InTaiLieu" element={<PrintingFile value={StateLogin} />} />
+        <Route path="/MuaGiayIn" element={<BuyingPaper value={StateLogin} />} />
+        <Route path="/QuanLiMayIn" element={<ManagePrinter value={StateLogin} />} />
       </Routes>
-      
-      <Footer />
     </>
   );
 }

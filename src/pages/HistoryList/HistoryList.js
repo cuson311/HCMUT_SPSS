@@ -2,8 +2,10 @@ import React, {useState} from 'react';
 import './History.css';
 import { Input } from "@material-tailwind/react";
 import {historyData} from '../../data/HistoryData'
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+export default function HistoryList(props) {
 
-export default function HistoryList() {
     const [state, setState] = useState(
         {historyList: historyData, input:''})
     function handleOnchange(event) {
@@ -13,7 +15,9 @@ export default function HistoryList() {
     }
 
     return (
-        <div className="History">
+      
+      <div className="History">
+          <Header value={props}/>
             <div className="search-bar w-6/12 mx-auto">
                 <Input label="Tìm kiếm" className='h-full' onChange={(event) => handleOnchange(event)}/>
             </div>
@@ -24,7 +28,7 @@ export default function HistoryList() {
                             <th><p className='rectangle'>Thời điểm in</p></th>
                             <th><p className='rectangle'>Tên máy tin</p></th>
                             <th><p className='rectangle'>Tên tệp tin</p></th>
-                            <th><p className='rectangle'>Num of pages</p></th>
+                            <th><p className='rectangle'>Số trang</p></th>
                         </tr>
                         {
                         state.historyList
@@ -64,6 +68,7 @@ export default function HistoryList() {
                 </li>
               </ul>
             </nav>
+            <Footer/>
         </div>
 
     );
