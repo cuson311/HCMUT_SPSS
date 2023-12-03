@@ -17,16 +17,15 @@ import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <>
-      <Header />
+      <Header role='admin' />
 
       <Routes>
-        <Route path="/TrangChu" element={<Homepage />} />
+        <Route path="/" element={<Homepage />} />
         <Route path="/LichSuIn" element={<HistoryList />} />
         <Route path="/TaiTaiLieu" element={<UploadFile />} />
         <Route path="/InTaiLieu" element={<PrintingFile />} />
         <Route path="/MuaGiayIn" element={<BuyingPaper />} />
         <Route path="/QuanLiMayIn" element={<ManagePrinter />} />
-
       </Routes>
       
       <Footer />
