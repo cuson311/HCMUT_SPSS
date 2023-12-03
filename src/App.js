@@ -7,7 +7,6 @@ import UploadFile from './pages/UploadFile/UploadFile'
 import PrintingFile from './pages/PrintingFile/PrintingFile'
 import ManagePrinter from './pages/ManagePrinter/Print_manage'
 import Footer from "./components/Footer/Footer";
-import SelectMember from "./Login/selectmember";
 
 
 import { Routes, Route } from "react-router-dom";
@@ -16,7 +15,6 @@ function App() {
   return (
     <>
       <Header role='admin' />
-      <SelectMember/>
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/LichSuIn" element={<HistoryList />} />
