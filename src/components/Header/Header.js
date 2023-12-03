@@ -19,34 +19,50 @@ import {
 import logo from '../../assets/image/logoBK.png';
 import { Link } from "react-router-dom";
 // profile menu component
-const profileMenuItems = [
+const profileMenuUser = [
   {
-    label: "My Profile",
+    label: "Lịch sử in",
+    to: '/LichSuIn',
     icon: UserCircleIcon,
   },
   {
-    label: "Edit Profile",
+    label: "Tải tài liệu",
+    to: '/TaiTaiLieu',
     icon: Cog6ToothIcon,
   },
   {
-    label: "Inbox",
+    label: "In tài liệu",
+    to: '/InTaiLieu',
     icon: InboxArrowDownIcon,
   },
   {
-    label: "Help",
+    label: "Mua giấy in",
+    to: '/MuaGiayIn',
     icon: LifebuoyIcon,
   },
   {
-    label: "Sign Out",
+    label: "Đăng xuất",
+    role: 'user',
+    icon: PowerIcon,
+  },
+];
+const profileMenuAdmin = [
+  {
+    label: "Quản lí máy in",
+    to: '/QuanLiMayIn',
+    icon: UserCircleIcon,
+  },
+  {
+    label: "Đăng xuất",
     icon: PowerIcon,
   },
 ];
  
-function ProfileMenu() {
+function ProfileMenu(props) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
- 
   const closeMenu = () => setIsMenuOpen(false);
- 
+  const role = props.props;
+  console.log(role)
   return (
     <Menu open={isMenuOpen} handler={setIsMenuOpen} placement="bottom-end">
       <MenuHandler>
@@ -70,54 +86,90 @@ function ProfileMenu() {
           />
         </Button>
       </MenuHandler>
-      <MenuList className="p-1">
-        {profileMenuItems.map(({ label, icon }, key) => {
-          const isLastItem = key === profileMenuItems.length - 1;
+      {role==='user' && (<MenuList className="p-1">
+        {profileMenuUser.map(({ label, to,icon }, key) => {
+          const isLastItem = key === profileMenuUser.length - 1;
           return (
-            <MenuItem
-              key={label}
-              onClick={closeMenu}
-              className={`flex items-center gap-2 rounded ${
-                isLastItem
-                  ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
-                  : ""
-              }`}
-            >
-              {React.createElement(icon, {
-                className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
-                strokeWidth: 2,
-              })}
-              <Typography
-                as="span"
-                variant="small"
-                className="font-mono"
-                color={isLastItem ? "red" : "inherit"}
+            <Link to = {to}>
+              <MenuItem
+                key={label}
+                onClick={closeMenu}
+                className={`flex items-center gap-2 rounded ${
+                  isLastItem
+                    ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                    : ""
+                }`}
               >
-                {label}
-              </Typography>
-            </MenuItem>
+                {React.createElement(icon, {
+                  className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
+                  strokeWidth: 2,
+                })}
+                {/* Đăng xuất */}
+                <Typography
+                  as="span"
+                  variant="small"
+                  className="font-mono"
+                  color={isLastItem ? "red" : "inherit"}
+                >
+                  {label}
+                </Typography>
+              </MenuItem>
+            </Link>
           );
         })}
-      </MenuList>
+      </MenuList>)}
+      {role==='admin' && (<MenuList className="p-1">
+        {profileMenuAdmin.map(({ label, to, icon }, key) => {
+          const isLastItem = key === profileMenuAdmin.length - 1;
+          return (
+            <Link to = {to}>
+              <MenuItem
+                key={label}
+                onClick={closeMenu}
+                className={`flex items-center gap-2 rounded ${
+                  isLastItem
+                    ? "hover:bg-red-500/10 focus:bg-red-500/10 active:bg-red-500/10"
+                    : ""
+                }`}
+              >
+                {React.createElement(icon, {
+                  className: `h-4 w-4 ${isLastItem ? "text-red-500" : ""}`,
+                  strokeWidth: 2,
+                })}
+                {/* Đăng xuất */}
+                <Typography
+                  as="span"
+                  variant="small"
+                  className="font-mono"
+                  color={isLastItem ? "red" : "inherit"}
+                >
+                  {label}
+                </Typography>
+              </MenuItem>
+            </Link>
+          );
+        })}
+      </MenuList>)}
     </Menu>
   );
 }
  
 
  
- export default function ComplexNavbar() {
+ export default function Header(props) {
   const [isNavOpen, setIsNavOpen] = React.useState(false);
 
   const toggleIsNavOpen = () => setIsNavOpen((cur) => !cur);
+  const role = props.role;
 
   return (
     <div className="w-full py-2 px-8">
       <div className="relative flex items-center justify-between text-blue-gray-900">
-        <Link to ='/TrangChu'>
+        <Link to ='/'>
             <img src={logo} alt="logo" size="md" width={60} height={60}/>
         </Link>
         
-        <ul className="flex flex-wrap items-center gap-y-2 gap-x-8 ml-10">
+        {role==='user' && (<ul className="flex flex-wrap items-center gap-y-2 gap-x-8 ml-10">
           <Link to= '/LichSuIn'>
               <li>
               <Typography
@@ -159,7 +211,9 @@ function ProfileMenu() {
               </Typography>
               </li>
           </Link>
-          <Link to= '/QuanLiMayIn'>
+        </ul>)}
+        {role === 'admin' &&(  <ul className="flex flex-wrap items-center gap-y-2 gap-x-8 ml-10">
+              <Link to= '/QuanLiMayIn'>
               <li>
               <Typography
                   color="blue-gray"
@@ -168,9 +222,11 @@ function ProfileMenu() {
                   QUẢN LÍ MÁY IN
               </Typography>
               </li>
-          </Link>
-        </ul>
-        <ProfileMenu/>
+              </Link>
+          </ul>
+        )
+        }
+        <ProfileMenu props={role}/>
         
       </div>
     </div>

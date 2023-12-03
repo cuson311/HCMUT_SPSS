@@ -15,7 +15,7 @@ export default function HistoryList() {
     return (
         <div className="History">
             <div className="search-bar w-6/12 mx-auto">
-              <Input label="Tìm kiếm" className='h-full' onChange={(event) => handleOnchange(event)}/>
+                <Input label="Tìm kiếm" className='h-full' onChange={(event) => handleOnchange(event)}/>
             </div>
             {<div className='file-table-wrapper'>
                     <table className='data-table'>
@@ -36,7 +36,6 @@ export default function HistoryList() {
                             <td>{item.printerID}</td>
                             <td>{item.fileName}</td>
                             <td>{item.pageNums}</td>
-                           
                           </tr>
                         ))
                         }
