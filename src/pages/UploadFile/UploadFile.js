@@ -1,41 +1,121 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import { Button } from '@material-tailwind/react';
+import pdfLogo from '../../assets/image/pdf_1.png';
+import docLogo from '../../assets/image/doc_1.png';
+import pptxLogo from '../../assets/image/pptx-file_1.png';
+import docxLogo from '../../assets/image/docx.png';
+import { useNavigate} from 'react-router-dom'
+import RequiredLogin from '../../components/RequiredLogin'
+export default function UploadPage(props) {
+  const navigate  = useNavigate();
+  const [selectedFiles, setSelectedFiles] = useState(props.value['uploadedFile']);
+  useEffect(() => {
+    props.value['uploadedFile'] = selectedFiles;
+    console.log(props.value['uploadedFile']);
+  }, [selectedFiles]);
 
-export default function UploadPage (props) {
-    const [files, setFiles] = useState([]);
+  const handleFileInputChange = (event) => {
+    const file = event.target.files[0];
+    setSelectedFiles([...selectedFiles, file]);
+  };
 
-    const handleFileUpload = (event) => {
-        const file = event.target.files[0];
-        const fileType = file.name.split('.').pop();
+  const handleDragOver = (event) => {
+    event.preventDefault();
+  };
 
-        if (['doc', 'pdf', 'pptx'].includes(fileType)) {
-            setFiles([...files, {file, fileType, isPrintable: true}]);
-        } else {
-            setFiles([...files, {file, fileType, isPrintable: false}]);
-        }
-    };
+  const handleDrop = (event) => {
+    event.preventDefault();
+    const file = event.dataTransfer.files[0];
+    setSelectedFiles([...selectedFiles, file]);
+  };
 
-    const handleFileDelete = (index) => {
-        setFiles(files.filter((_, i) => i !== index));
-    };
+  const handlePrintingFile = (file) => {
+    props.value['printingFile'] = file;
+    console.log(props.value['printingFile'])
+    navigate('/InTaiLieu');
+  }; 
 
-    return (
-        <>
-            <Header value={props}/>
-            <h1>UploadPage</h1>
-            <input type="file" onChange={handleFileUpload} />
-            {files.map((file, index) => (
-                <div key={index}>
-                    <p>{file.file.name}</p>
-                    {file.isPrintable ? (
-                        <button onClick={() => window.print()}>Print</button>
-                    ) : (
-                        <button style={{color: 'red'}} onClick={() => handleFileDelete(index)}>X</button>
-                    )}
-                </div>
-            ))}
-            <Footer/>
-        </>
-    );
+
+  return (
+    <>
+      <Header value={props} />
+      { props.value.isLogin === false ? (<RequiredLogin/>) : (
+      <div className='container mt-3 mx-auto'>
+        
+        <div className='flex justify-center'>
+          <div
+            style={{
+              display: 'flex',
+              flex: '1',
+              maxWidth: '60%',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '400px',
+              border: '2px dashed gray',
+              margin: '20px',
+            }}
+            onDragOver={handleDragOver}
+            onDrop={handleDrop}
+          >
+            <label htmlFor='fileInput' className='cursor-pointer'>
+              <input type='file' id='fileInput' style={{ display: 'none' }} onChange={handleFileInputChange} />
+              <div style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                <img src={pdfLogo} alt="PDF" style={{ width: '64px', height: '64px' }}></img>
+                <img src={pptxLogo} alt="PPTX" style={{ width: '64px', height: '64px' }}></img>
+                <img src={docLogo} alt="DOC" style={{ width: '64px', height: '64px' }}></img>
+                <img src={docxLogo} alt="DOCX" style={{ width: '64px', height: '64px' }}></img>
+              </div>
+            </label>
+          </div>
+          {selectedFiles.length !== 0 && (
+            <div className='w-1/2 overflow-y-scroll	' style={{ margin: '20px', height: '400px'}}>
+              {selectedFiles.length > 0 && (
+                <ul>
+                  {selectedFiles.map((file, index) => (
+                    <div
+                      className='rounded-lg'
+                      style={{
+                        border:
+                          file.type === 'application/pdf' ||
+                          file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+                          file.type === 'application/msword' ||
+                          file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                            ? '2px solid rgb(34,211,238)'
+                            : '2px solid rgb(253,164,175)',
+                        marginBottom: '10px',
+                      }}
+                      key={file.name}
+                    >
+                      <li className='p-2' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            {file.name}
+                            {file.type === 'application/pdf' ||
+                            file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+                            file.type === 'application/msword' ||
+                            file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation' ? (
+                            <span style={{width:'100px'}}>
+                              <Button fullWidth color='blue' size="sm" onClick={() => handlePrintingFile (file)}>In ngay</Button>
+                            </span>
+                            ) : (
+                            <span style={{width:'100px'}}>
+                            <Button fullWidth color='red'  size="sm" style= {{minWidth:'60px'}}onClick={() => {
+                                const updatedFiles = [...selectedFiles];
+                                updatedFiles.splice(index, 1);
+                                setSelectedFiles(updatedFiles);
+                            }}>Xóa</Button>
+                            </span>
+                            )}
+                      </li>
+                    </div>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )}
+        </div>
+      </div>) }
+      <Footer />
+    </>
+  );
 }

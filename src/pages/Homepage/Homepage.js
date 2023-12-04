@@ -1,4 +1,11 @@
-import { Carousel, Typography } from "@material-tailwind/react";
+import {
+  Carousel,
+  Card,
+  CardHeader,
+  CardBody,
+  Typography,
+  Avatar,
+} from "@material-tailwind/react";
  import Header from "../../components/Header/Header";
  import Footer from "../../components/Footer/Footer";
 export default function Homepage(props) {
@@ -35,12 +42,17 @@ export default function Homepage(props) {
             alt="image 2"
             className="h-full w-full object-cover"
         />
+        <img
+            src="https://keystoneacademic-res.cloudinary.com/image/upload/element/19/199025_HCMUT1.png"
+            alt="image 2"
+            className="h-full w-full object-cover"
+        />
 
         </Carousel>
         <div
             style={{
             position: "absolute",
-            top: "50%",
+            top: "70%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             textAlign: "center",
@@ -58,22 +70,10 @@ export default function Homepage(props) {
                 <div className="container max-w-xl p-6 py-12 mx-auto space-y-24 lg:px-8 lg:max-w-7xl">
                     <div className="grid lg:gap-8 lg:grid-cols-2 lg:items-center">
                         <div>
-                            <h3 className="text-2xl font-bold tracki sm:text-3xl dark:dark:text-gray-50">Phone Store - Nơi công nghệ gặp gỡ đẳng cấp </h3>
+                            <h3 className="text-2xl font-bold tracki sm:text-3xl dark:dark:text-gray-50">Student Smart Printing Service - Trải nghiệm in ấn thông minh cho sinh viên</h3>
                             <p className="mt-3 text-lg dark:dark:text-gray-400"> </p>
                             <div className="mt-12 space-y-12">
-                                <div className="flex">
-                                    <div className="flex-shrink-0">
-                                        <div className="flex items-center justify-center w-12 h-12 rounded-md dark:dark:bg-violet-400 dark:dark:text-gray-900">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div className="ml-4">
-                                        <h4 className="text-lg font-medium leadi dark:dark:text-gray-50">Sản phẩm Độc Quyền</h4>
-                                        <p className="mt-2 dark:dark:text-gray-400">Khám phá các phiên bản iPhone đặc biệt chỉ có tại Phone Store. Từ những chiếc iPhone màu sắc giới hạn đến những phiên bản cộng tác độc đáo với các thương hiệu nổi tiếng. Hãy là người đầu tiên sở hữu những sản phẩm độc đáo này.</p>
-                                    </div>
-                                </div>
+
                                 <div className="flex">
                                     <div className="flex-shrink-0">
                                         <div className="flex items-center justify-center w-12 h-12 rounded-md dark:dark:bg-violet-400 dark:dark:text-gray-900">
@@ -84,30 +84,78 @@ export default function Homepage(props) {
                                     </div>
                                     <div className="ml-4">
                                         <h4 className="text-lg font-medium leadi dark:dark:text-gray-50">Chất Lượng Đảm Bảo</h4>
-                                        <p className="mt-2 dark:dark:text-gray-400">Mỗi iPhone bán ra từ Phone Store đều trải qua quy trình kiểm định nghiêm ngặt để đảm bảo rằng bạn nhận được sản phẩm hoàn hảo nhất. Ngoài ra, chúng tôi còn cung cấp chính sách đổi trả linh hoạt để bạn luôn hài lòng với quyết định của mình.</p>
+                                        <p className="mt-2 dark:dark:text-gray-400">Mọi lần in đều được đảm bảo về chất lượng tại SSPS. Hệ thống kiểm soát chất lượng nghiêm ngặt giúp đảm bảo mọi tài liệu in của bạn đều rõ nét và chất lượng. Chúng tôi cam kết mang đến trải nghiệm in ấn tốt nhất cho cộng đồng sinh viên.
+</p>
                                     </div>
                                 </div>
-                                <div className="flex">
-                                    <div className="flex-shrink-0">
-                                        <div className="flex items-center justify-center w-12 h-12 rounded-md dark:dark:bg-violet-400 dark:dark:text-gray-900">
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-7 h-7">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                                            </svg>
-                                        </div>
-                                    </div>
-                                    <div className="ml-4">
-                                        <h4 className="text-lg font-medium leadi dark:dark:text-gray-50">Ưu Đãi Đặc Biệt</h4>
-                                        <p className="mt-2 dark:dark:text-gray-400">Tham gia chương trình thành viên của Phone Store để nhận được các ưu đãi độc quyền và tiết kiệm chi phí cho mỗi lần mua sắm. Đăng ký bản tin của chúng tôi để không bỏ lỡ bất kỳ chương trình khuyến mãi nào.</p>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <div aria-hidden="true" className="mt-10 lg:mt-0">
-                            <img src="https://source.unsplash.com/random/360x480" alt className="mx-auto rounded-lg shadow-lg dark:dark:bg-gray-500" />
+                            <img src="https://www.kennesaw.edu/printing-services/images/print-services-banner.jpeg" className="mx-auto rounded-lg shadow-lg dark:dark:bg-gray-500" />
                         </div>
                     </div>
                 </div>
         </section>
+        <div className="flex mb-10" style={{justifyContent:'space-arround'}}>
+            <Card
+                shadow={false}
+                className="relative max-w-[36rem] w-full m-4 items-end justify-center overflow-hidden text-center"
+            >
+                <CardHeader
+        floated={false}
+        shadow={false}
+        color="transparent"
+        className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://i1.adis.ws/i/canon/canon-get-inspired-smart-printing-1-1920x1080-tint_1?qlt=80&w=1920&sm=aspect&aspect=16:9&scaleFit=poi&poi=0.5021430206298828,0.3176380750868056,0.125,0.2222222222222222&fmt=jpg&fmt.options=interlaced&bg=rgb(255,255,255)')] bg-cover bg-center"
+      >
+        <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/90 via-black/80" />
+      </CardHeader>
+      <CardBody className="relative py-14 px-6 md:px-12">
+            <div className="mb-4">
+                <h3 className="text-lg font-medium leadi text-white mb-3">Sản phẩm Độc Quyền</h3>
+                <p className="mt-2 text-white">Khám phá các dịch vụ in ấn độc đáo chỉ có tại Student Smart Printing Service (SSPS). Tận hưởng trải nghiệm in ấn chất lượng cao với những tiện ích độc quyền dành riêng cho sinh viên, từ các tùy chọn in đa dạng đến những ưu đãi đặc biệt.</p>
+            </div>
+            <Avatar
+          size="xl"
+          variant="circular"
+          alt="tania andrew"
+          className="border-2 border-white"
+          src="https://i1.adis.ws/i/canon/canon-get-inspired-smart-printing-1-1920x1080-tint_1?qlt=80&w=1920&sm=aspect&aspect=16:9&scaleFit=poi&poi=0.5021430206298828,0.3176380750868056,0.125,0.2222222222222222&fmt=jpg&fmt.options=interlaced&bg=rgb(255,255,255)"
+        />
+      </CardBody>
+      
+            </Card>
+            
+            <Card
+                shadow={false}
+                className="relative max-w-[36rem] w-full m-4 items-end justify-center overflow-hidden text-center"
+            >
+                <CardHeader
+        floated={false}
+        shadow={false}
+        color="transparent"
+        className="absolute inset-0 m-0 h-full w-full rounded-none bg-[url('https://ctrl-print.co.uk/wp-content/uploads/2020/07/Printer-with-tray-open-scaled.jpeg')] bg-cover bg-center"
+      >
+        <div className="to-bg-black-10 absolute inset-0 h-full w-full bg-gradient-to-t from-black/90 via-black/80" />
+      </CardHeader>
+      <CardBody className="relative py-14 px-6 md:px-12">
+            <div className="mb-4">
+                <h3 className="text-lg font-medium leadi text-white mb-3">Ưu Đãi Đặc Biệt</h3>
+                <p className="mt-2 text-white">Hãy gia nhập cộng đồng SSPS ngay hôm nay để đặc quyền nhận các ưu đãi đặc biệt. Với chương trình thành viên, bạn sẽ được hưởng những ưu đãi độc quyền và giảm giá đặc biệt mỗi khi sử dụng dịch vụ in của chúng tôi. Đừng quên đăng ký nhận bản tin để luôn cập nhật thông tin về các chương trình khuyến mãi mới.</p>
+            </div>
+            <Avatar
+          size="xl"
+          variant="circular"
+          alt="tania andrew"
+          className="border-2 border-white"
+          src="https://ctrl-print.co.uk/wp-content/uploads/2020/07/Printer-with-tray-open-scaled.jpeg"
+        />
+      </CardBody>
+      
+            </Card>
+
+        </div>
+
         <Footer/>
       </>
   );

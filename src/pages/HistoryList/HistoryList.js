@@ -4,6 +4,7 @@ import { Input } from "@material-tailwind/react";
 import {historyData} from '../../data/HistoryData'
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import RequiredLogin from '../../components/RequiredLogin';
 export default function HistoryList(props) {
 
     const [state, setState] = useState(
@@ -18,56 +19,60 @@ export default function HistoryList(props) {
       
       <div className="History">
           <Header value={props}/>
-            <div className="search-bar w-6/12 mx-auto">
-                <Input label="Tìm kiếm" className='h-full' onChange={(event) => handleOnchange(event)}/>
-            </div>
-            {<div className='file-table-wrapper'>
-                    <table className='data-table'>
-                        <tr>
-                            <th><p className='rectangle'>ID</p></th>
-                            <th><p className='rectangle'>Thời điểm in</p></th>
-                            <th><p className='rectangle'>Tên máy tin</p></th>
-                            <th><p className='rectangle'>Tên tệp tin</p></th>
-                            <th><p className='rectangle'>Số trang</p></th>
-                        </tr>
-                        {
-                        state.historyList
-                        .filter((item) => item.printerID.toLowerCase().includes(state.input.toLowerCase()))
-                        .map((item, index) => (
-                          <tr key={index}>
-                             <td>{item.ID}</td>
-                            <td>{item.stamp}</td>
-                            <td>{item.printerID}</td>
-                            <td>{item.fileName}</td>
-                            <td>{item.pageNums}</td>
-                          </tr>
-                        ))
-                        }
-                    </table>
+            { props.value.isLogin === false ? (<RequiredLogin/>) : (
+              <>
+                <div className="search-bar w-6/12 mx-auto">
+                    <Input label="Tìm kiếm" className='h-full' onChange={(event) => handleOnchange(event)}/>
                 </div>
-                }
-            <nav class="mt-5">
-              <ul class="pag pagination justify-content-end">
-                <li class="page-item">
-                  <a class="page-link text-dark">Previous</a>
-                </li>
-                <li class="page-item active">
-                  <a class="page-link" href="#">1</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link text-dark">2</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link text-dark">3</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link text-dark">4</a>
-                </li>
-                <li class="page-item">
-                  <a class="page-link text-dark">Next</a>
-                </li>
-              </ul>
-            </nav>
+                {<div className='file-table-wrapper'>
+                        <table className='data-table'>
+                            <tr>
+                                <th><p className='rectangle'>ID</p></th>
+                                <th><p className='rectangle'>Thời điểm in</p></th>
+                                <th><p className='rectangle'>Tên máy tin</p></th>
+                                <th><p className='rectangle'>Tên tệp tin</p></th>
+                                <th><p className='rectangle'>Số trang</p></th>
+                            </tr>
+                            {
+                            state.historyList
+                            .filter((item) => item.printerID.toLowerCase().includes(state.input.toLowerCase()))
+                            .map((item, index) => (
+                              <tr key={index}>
+                                <td>{item.ID}</td>
+                                <td>{item.stamp}</td>
+                                <td>{item.printerID}</td>
+                                <td>{item.fileName}</td>
+                                <td>{item.pageNums}</td>
+                              </tr>
+                            ))
+                            }
+                        </table>
+                    </div>
+                    }
+                <nav class="mt-5">
+                  <ul class="pag pagination justify-content-end">
+                    <li class="page-item">
+                      <a class="page-link text-dark">Previous</a>
+                    </li>
+                    <li class="page-item active">
+                      <a class="page-link" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link text-dark">2</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link text-dark">3</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link text-dark">4</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link text-dark">Next</a>
+                    </li>
+                  </ul>
+                </nav>
+              </>
+            )}
             <Footer/>
         </div>
 

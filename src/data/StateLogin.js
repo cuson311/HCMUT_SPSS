@@ -1,7 +1,10 @@
 export const StateLogin = {
     isLogin: false,
-    username: 'a',
-    fullname: 'C',
+    username: '',
+    fullname: '',
     avatar: '',
-    role: 'b'
+    role: '',
+    uploadedFile: [],
+    printingFile: null,
+    paperNumber: 0
 }

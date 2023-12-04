@@ -1,0 +1,59 @@
+/* PrinterOptions.css */
+  #location {
+    font-size: 9px;
+  }
+  
+  #option {
+    height: 500px ;
+  }
+  #printerlabel{
+    
+    background-color: white;
+    border: 1px solid white; /* Đường viền dashed không solid */
+    border-radius: 5px; /* Góc tròn của đường viền */
+   
+  }
+  #printerlist{
+    background-color: #53a1d6;
+    height: 300px;
+    border: 1px solid #53a1d6; /* Đường viền dashed không solid */
+    border-radius: 15px; /* Góc tròn của đường viền */
+    padding: 20px;
+  }
+
+  .showcontent {
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid black ;
+
+  }
+  
+  h2 {
+    padding-left: 60px;
+    padding-bottom: 15px;
+    text-align: left;
+    color: rgb(87, 120, 190);
+    font-size: 30px;
+  }
+
+.PrinterMultipleChoices{
+  padding-left: 20px ;
+   
+
+
+}
+.Print{
+  margin-left:30px ; 
+  width: 60px;
+
+
+  background-color: rgb(87, 120, 190);
+}
+#printbutton{
+   text-align: center;
+   padding-top: 30px;
+}
+#prop1{
+  border: 1px solid rgb(168, 163, 163);
+  margin: 2px ;
+}

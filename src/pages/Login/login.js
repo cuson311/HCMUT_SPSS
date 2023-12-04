@@ -18,6 +18,7 @@ function Login(props) {
       props.value.username = matchedUser.username;
       props.value.fullname = matchedUser.fullname;
       props.value.avatar = matchedUser.avatar;
+      props.value.paperNumber = matchedUser.paperNumber;
       props.value.isLogin = true;
       navigate('/');
     } else {
