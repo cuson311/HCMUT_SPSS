@@ -100,7 +100,7 @@ function Login(props) {
                 </div>
               </div>
               <div className="mt-2 mt-md-30 ms-md-20">
-              <h2 className='m-3 mb-0' style={{color: '#990033', fontSize: 15.23, fontFamily: 'Inter', fontWeight: '700', wordWrap: 'break-word'}}>Ngôn ngữ</h2>
+              <h2 className='m-3 mb-0 p-0' style={{color: '#990033', fontSize: 15.23, fontFamily: 'Inter', fontWeight: '700', wordWrap: 'break-word'}}>Ngôn ngữ</h2>
               <div className='m-4 mt-0 mb-3' >
               <span style={{color: '#0000EE', fontSize: 12.29, fontFamily: 'Inter', fontWeight: '400', textDecoration: 'underline', wordWrap: 'break-word'}}>Tiếng Việt</span>
                 <span> </span>
@@ -108,7 +108,7 @@ function Login(props) {
                 <span> </span>
                 <span style={{color: '#0000EE', fontSize: 12.59, fontFamily: 'Inter', fontWeight: '400', textDecoration: 'underline', wordWrap: 'break-word'}}>Tiếng Anh</span>
               </div>
-              <h2 className='m-3 mb-0' style={{color: '#990033', fontSize: 15.11, fontFamily: 'Inter', fontWeight: '700', wordWrap: 'break-word'}}>Lưu ý</h2>
+              <h2 className='m-3 mb-0 p-0' style={{color: '#990033', fontSize: 15.11, fontFamily: 'Inter', fontWeight: '700', wordWrap: 'break-word'}}>Lưu ý</h2>
                 <p className='m-4 mt-0 mb-0' style={{color: 'black', fontSize: 12.19, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>
                 Trang đăng nhập này cho phép đăng nhập một lần đến nhiều hệ thống web ở trường Đại học Bách Khoa Tp.HCM. Điều này có nghĩa là bạn chỉ đăng nhập một lần cho những hệ thống web đã đăng ký với hệ thống xác thực quản lý truy cập tập trung.
                 </p>
@@ -119,7 +119,7 @@ function Login(props) {
                 Vì lý do an ninh, bạn hãy Thoát khỏi trình duyệt Web khi bạn kết thúc việc truy cập các dịch vụ đòi hỏi xác thực!
                 </p>
 
-              <h2 className='m-3 mb-0' style={{color: '#990033', fontSize: 15.23, fontFamily: 'Inter', fontWeight: '700', wordWrap: 'break-word'}}>Hỗ trợ kỹ thuật</h2>
+              <h2 className='m-3 mb-0 p-0' style={{color: '#990033', fontSize: 15.23, fontFamily: 'Inter', fontWeight: '700', wordWrap: 'break-word'}}>Hỗ trợ kỹ thuật</h2>
                 <div className='m-4 mt-0'>
                   <span style={{width: 178.87, height: 15}}>
                     <span style={{color: 'black', fontSize: 12.19, fontFamily: 'Inter', fontWeight: '400', wordWrap: 'break-word'}}>E-mail: </span>
