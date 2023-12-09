@@ -2,6 +2,14 @@ import React from "react";
 import "./Print_manage.css";
 import ReactSwitch from "react-switch";
 import { useState, useEffect } from "react";
+import { Switch } from "@material-tailwind/react";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  Typography,
+} from "@material-tailwind/react";
+ 
 
 const PrinterCard = ({ data }) => {
   const printer = require("./printer_data");
@@ -13,25 +21,38 @@ const PrinterCard = ({ data }) => {
   };
   useEffect(() => {}, [triggerRender]);
   return (
-    <div className="printer_card">
-      <img src={data.img_source} alt="printer_img" className="printer_img" />
-      <span className="card_text">ID: {data.id_printer} </span>
-      <span className="card_text">Brand: {data.brand_name} </span>
-      <span className="card_text">Model: {data.model_name} </span>
-      <span className="card_text">
-        Location: {data.campus_name}/{data.building_name}/{data.location_name}
-      </span>
-      <span className="card_text">Paper type: A3, A4, A5</span>
-      <span className="card_text">File type: .pdf, .doc, .xlsx</span>
-      <div className="switch_wrap">
-        <ReactSwitch
-          checked={data.status}
-          onChange={handleChange}
-          uncheckedIcon={false}
-          checkedIcon={false}
-          className="switch_button"
-        />
-      </div>
+    <div >
+      <Card className="mt-6  border-2 transition ease-in-out delay-150 hover:-translate-y-2 duration-300 bg-slate-50"  >
+        <CardHeader className="relative h-56 border">
+          <img
+            className="w-full h-full object-cover"
+            src={data.img_source} alt="printer_img" 
+          />
+        </CardHeader>
+        <CardBody>
+          <Typography variant="h5" color="blue-gray" className="mb-2">
+            ID: {data.id_printer}
+          </Typography>
+          <Typography>
+            Brand: {data.brand_name}
+          </Typography>
+          <Typography>
+            Model: {data.model_name}
+          </Typography>
+          <Typography>
+            Location: {data.campus_name}/{data.building_name}/{data.location_name}
+          </Typography>
+          <Typography>
+            Paper type: A3, A4
+          </Typography>
+          <Typography>
+            File type: .pdf
+          </Typography>
+        </CardBody>
+        <div className="flex justify-center my-2">
+        <Switch  checked={data.status} onChange={handleChange} color="green" defaultChecked />
+        </div>
+      </Card>
     </div>
   );
 };

@@ -9,9 +9,20 @@ import "react-dropdown/style.css";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import RequiredLogin from '../../components/RequiredLogin'
+import { Button } from "@material-tailwind/react";
+import {toast} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
 const PrintManage = (props) => {
   const printer = require("./printer_data");
   const [data, setData] = useState(printer.get_array());
+  const [inputState, setinputState] = useState({ input: '' });
+
+  function handleOnchange(event) {
+    event.preventDefault();
+    console.log(event.target.value);
+    setinputState({ input: event.target.value });
+  }
   const [showModal, setShowModal] = useState(false);
   const campus = ["BK_CS1", "BK_CS2"];
   const building_cs1 = [
@@ -53,7 +64,7 @@ const PrintManage = (props) => {
       location === "" ||
       img === ""
     ) {
-      alert("Please type all information");
+      toast.warn("Vui lòng điền đầy đủ thông tin")
       return;
     }
     let item = {
@@ -67,6 +78,7 @@ const PrintManage = (props) => {
       status: true,
     };
     printer.add_printer(item);
+    toast.success("Thêm máy in thành công")
     setData(printer.get_array());
     setShowModal(false);
   };
@@ -76,28 +88,50 @@ const PrintManage = (props) => {
       <Header value={props}/>
       { props.value.isLogin === false ? (<RequiredLogin/>) : (
         <>
-          <div className="print_manager_search">
-            <div className="search_wrapper">
-              <input
-                type="text"
-                className="print_manager_search_input"
-                placeholder="Tìm kiếm"
-              />
-              <button className="print_manager_search_button">
-                <img src={search_icon} alt="search_icon" width={30} height={30} />
-              </button>
+          <div className="flex justify-between items-center my-4 px-4">
+            <div className="h-fit"> 
+              <div className="relative flex w-full flex-wrap items-stretch">
+                <input
+                  type="search"
+                  className="relative m-0 -mr-0.5 block min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
+                  placeholder="Search"
+                  aria-label="Search"
+                  aria-describedby="button-addon1"
+                  onChange={(e) => handleOnchange(e)} />
+                <button
+                  className="relative z-[2] flex items-center rounded-r bg-primary px-6 py-2.5 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-primary-700 hover:shadow-lg focus:bg-primary-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-primary-800 active:shadow-lg"
+                  type="button"
+                  id="button-addon1"
+                  data-te-ripple-init
+                  data-te-ripple-color="light">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="h-5 w-5">
+                    <path
+                      fill-rule="evenodd"
+                      d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
+                      clip-rule="evenodd" />
+                  </svg>
+                </button>
+              </div>
             </div>
-            <button className="add_print_button" onClick={() => setShowModal(true)}>
+            <Button color="blue" style={{minWidth:'150px'}} onClick={() => setShowModal(true)}>
               Thêm máy in
-            </button>
+            </Button>
           </div>
-          <div className="printer_container">
             {data.length > 0 ? (
-              data.map((item, index) => <PrinterCard key={index} data={item} />)
+            <div className="grid grid-cols-4 mx-auto gap-3 mb-3">
+              { 
+                data
+                .filter((item) => item.brand_name && item.brand_name.toLowerCase().includes(inputState.input.toLowerCase()))
+                .map((item, index) => <PrinterCard key={index} data={item} />)
+              }
+            </div>
             ) : (
-              <div>NOT FOUND</div>
+              <div className="w-full flex justify-center items-center" style={{minHeight:'300px'}}>Không tìm thấy kết quả</div>
             )}
-          </div>
 
           {showModal && (
             <div className="add_printer_model">
