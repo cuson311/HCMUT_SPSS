@@ -97,7 +97,7 @@ export default function Homepage(props) {
                     </div>
                 </div>
         </section>
-        <div className="flex mb-10" style={{justifyContent:'space-arround'}}>
+        <div className="flex mb-10 mx-auto px-5" style={{justifyContent:'space-between'}}>
             <Card
                 shadow={false}
                 className="relative max-w-[36rem] w-full m-4 items-end justify-center overflow-hidden text-center"
