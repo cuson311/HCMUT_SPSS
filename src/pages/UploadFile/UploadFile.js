@@ -8,6 +8,8 @@ import pptxLogo from '../../assets/image/pptx-file_1.png';
 import docxLogo from '../../assets/image/docx.png';
 import { useNavigate} from 'react-router-dom'
 import RequiredLogin from '../../components/RequiredLogin'
+import {toast} from 'react-toastify'
+
 export default function UploadPage(props) {
   const navigate  = useNavigate();
   const [selectedFiles, setSelectedFiles] = useState(props.value['uploadedFile']);
@@ -18,6 +20,15 @@ export default function UploadPage(props) {
 
   const handleFileInputChange = (event) => {
     const file = event.target.files[0];
+    if (file.type === 'application/pdf' ||
+    file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+    file.type === 'application/msword' ||
+    file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation'){
+      toast.success("Tải lên thành công")
+    }
+    else {
+      toast.warn("File không đúng định dạng")
+    }
     setSelectedFiles([...selectedFiles, file]);
   };
 
@@ -28,6 +39,15 @@ export default function UploadPage(props) {
   const handleDrop = (event) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
+    if (file.type === 'application/pdf' ||
+    file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
+    file.type === 'application/msword' ||
+    file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation'){
+      toast.success("Tải lên thành công")
+    }
+    else {
+      toast.warn("File không đúng định dạng")
+    }
     setSelectedFiles([...selectedFiles, file]);
   };
 
@@ -86,6 +106,7 @@ export default function UploadPage(props) {
                             : '2px solid rgb(253,164,175)',
                         marginBottom: '10px',
                       }}
+                    
                       key={file.name}
                     >
                       <li className='p-2' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
@@ -102,6 +123,7 @@ export default function UploadPage(props) {
                             <Button fullWidth color='red'  size="sm" style= {{minWidth:'60px'}}onClick={() => {
                                 const updatedFiles = [...selectedFiles];
                                 updatedFiles.splice(index, 1);
+                                toast.success("Xóa file thành công!")
                                 setSelectedFiles(updatedFiles);
                             }}>Xóa</Button>
                             </span>

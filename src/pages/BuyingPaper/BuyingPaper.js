@@ -4,6 +4,8 @@ import Footer from '../../components/Footer/Footer';
 import paperImg from '../../assets/image/paper.jpg';
 import { Typography, Button, Select, Option, Input } from '@material-tailwind/react';
 import RequiredLogin from '../../components/RequiredLogin'
+import {toast} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 const BuyingPapers = (props) => {
   console.log(props.value['paperNumber'])
   const [state, SetQuantity] = useState({ quantity: 0, price: 0 });
@@ -34,12 +36,21 @@ const BuyingPapers = (props) => {
   };
   
   const handleBuyPaper = () => {
-    props.value['paperNumber'] = parseInt(props.value['paperNumber']) + state.quantity;
-    SetQuantity((prevState) => ({
-      ...prevState,
-      quantity: 0,
-      price: 0,
-    }));
+    if (parseInt(state.quantity) === 0) {
+      toast.warn("Vui lòng chọn số lượng!");
+      return;
+    }
+    else {
+        props.value['paperNumber'] = parseInt(props.value['paperNumber']) + state.quantity;
+        toast.success("Mua giấy thành công!")
+        SetQuantity((prevState) => ({
+          ...prevState,
+          quantity: 0,
+          price: 0,
+        }
+        ));
+    }
+    
   }
   return (
     <>

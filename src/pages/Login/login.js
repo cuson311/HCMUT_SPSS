@@ -3,6 +3,9 @@ import hcmut from '../../assets/image/bk_logo.png';
 import Footer from '../../components/Footer/Footer';
 import {useNavigate  } from 'react-router-dom';
 import {UserData} from '../../data/UserData';
+import {toast} from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
+
 function Login(props) {
   console.log(UserData);
   const {isLogin, username, role} = props.value
@@ -12,17 +15,23 @@ function Login(props) {
     e.preventDefault();
     const enteredUsername = document.getElementById('email').value;
     const enteredPassword = document.getElementById('password').value;
-    const matchedUser = UserData.find(user => user.username === enteredUsername && user.password === enteredPassword);
-    if (matchedUser) {
-      console.log("Data match:", matchedUser);
-      props.value.username = matchedUser.username;
-      props.value.fullname = matchedUser.fullname;
-      props.value.avatar = matchedUser.avatar;
-      props.value.paperNumber = matchedUser.paperNumber;
-      props.value.isLogin = true;
-      navigate('/');
-    } else {
-      alert("Invalid username or password");
+    if (!(enteredUsername && enteredPassword)) {
+      toast.warning('Vui lòng nhập đầy đủ thông tin')
+    }
+    else {
+      const matchedUser = UserData.find(user => user.username === enteredUsername && user.password === enteredPassword);
+      if (matchedUser) {
+        console.log("Data match:", matchedUser);
+        props.value.username = matchedUser.username;
+        props.value.fullname = matchedUser.fullname;
+        props.value.avatar = matchedUser.avatar;
+        props.value.paperNumber = matchedUser.paperNumber;
+        props.value.isLogin = true;
+        toast.success("Đăng nhập thành công!")
+        navigate('/');
+      } else {
+        toast.error("Sai thông tin đăng nhập");
+      }
     }
   }
   return (

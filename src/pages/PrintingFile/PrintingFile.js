@@ -1,16 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { Typography } from '@material-tailwind/react';
 import PrinterPicker from './PrinterPicker'
 import RequiredFile from '../../components/RequiredFile';
 import RequiredLogin from '../../components/RequiredLogin'
-import { Button } from "@material-tailwind/react";
-import { Input } from "@material-tailwind/react";
 import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import FormControl from '@mui/material/FormControl';
-import NativeSelect from '@mui/material/NativeSelect';
 import PropertiesPicker from './PropertiesPicker.js';
 const PrintingFile = (props) => {
     const file = props.value['printingFile']

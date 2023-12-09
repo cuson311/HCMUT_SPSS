@@ -8,6 +8,8 @@ import SelectMember from "./pages/Login/selectmember";
 import {StateLogin} from './data/StateLogin'
 import Login from './pages/Login/login';
 import { Routes, Route } from "react-router-dom";
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -22,6 +24,8 @@ function App() {
         <Route path="/MuaGiayIn" element={<BuyingPaper value={StateLogin} />} />
         <Route path="/QuanLiMayIn" element={<ManagePrinter value={StateLogin} />} />
       </Routes>
+      <ToastContainer />
+
     </>
   );
 }

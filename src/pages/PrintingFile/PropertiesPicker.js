@@ -6,7 +6,14 @@ import InputLabel from '@mui/material/InputLabel';
 import FormControl from '@mui/material/FormControl';
 import NativeSelect from '@mui/material/NativeSelect';
 import './Properties.css'
+import {toast} from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
+
+
 export default function PropertiesPicker() {
+    function handlePrintingSubmit() {
+        return toast.success("Đặt in thành công!")
+    }
     return (
     <form className="custom-options-form flex flex-wrap justify-center">
         <div className="w-72" id="prop1">
@@ -169,7 +176,7 @@ export default function PropertiesPicker() {
         </Box>
     </div>
     <div className="w-72" id="printbutton">
-    <Button color="blue" fullWidth>In Ngay</Button>
+    <Button color="blue" onClick={(e)=>handlePrintingSubmit(e)} fullWidth>In Ngay</Button>
     </div>
     </form>
     )
