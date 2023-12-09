@@ -3,9 +3,6 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import { Button } from '@material-tailwind/react';
 import pdfLogo from '../../assets/image/pdf_1.png';
-import docLogo from '../../assets/image/doc_1.png';
-import pptxLogo from '../../assets/image/pptx-file_1.png';
-import docxLogo from '../../assets/image/docx.png';
 import { useNavigate} from 'react-router-dom'
 import RequiredLogin from '../../components/RequiredLogin'
 import {toast} from 'react-toastify'
@@ -15,7 +12,6 @@ export default function UploadPage(props) {
   const [selectedFiles, setSelectedFiles] = useState(props.value['uploadedFile']);
   useEffect(() => {
     props.value['uploadedFile'] = selectedFiles;
-    console.log(props.value['uploadedFile']);
   }, [selectedFiles]);
 
   const handleFileInputChange = (event) => {

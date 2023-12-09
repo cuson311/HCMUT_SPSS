@@ -1,6 +1,5 @@
 import React from "react";
 import "./Print_manage.css";
-import ReactSwitch from "react-switch";
 import { useState, useEffect } from "react";
 import { Switch } from "@material-tailwind/react";
 import {

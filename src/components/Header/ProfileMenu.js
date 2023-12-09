@@ -17,7 +17,6 @@ import UploadIcon from '@mui/icons-material/Upload';
 import PrintIcon from '@mui/icons-material/Print';
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
-import logo from '../../assets/image/logoBK.png';
 import { Link , useNavigate } from "react-router-dom";
 const profileMenuUser = [
   {
@@ -62,7 +61,7 @@ const profileMenuAdmin = [
 export default function ProfileMenu(props) {
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
   const closeMenu = () => setIsMenuOpen(false);
-  const {isLogin, username, fullname, avatar, role} = props.props;
+  const {isLogin, fullname, avatar, role} = props.props;
   const navigate  = useNavigate();
   const handleClickLogOut = (e) => {
     props.props['isLogin'] = false;

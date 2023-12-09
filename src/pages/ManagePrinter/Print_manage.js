@@ -1,6 +1,5 @@
 import React from "react";
 import "./Print_manage.css";
-import search_icon from "./asset/search_icon.png";
 import PrinterCard from "./Printer_card";
 import { useState, useEffect } from "react";
 import quit_logo from "./asset/quit_icon.png";

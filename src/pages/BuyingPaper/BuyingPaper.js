@@ -2,7 +2,7 @@ import { React, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import paperImg from '../../assets/image/paper.jpg';
-import { Typography, Button, Select, Option, Input } from '@material-tailwind/react';
+import { Typography, Button, Select, Option } from '@material-tailwind/react';
 import RequiredLogin from '../../components/RequiredLogin'
 import {toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";

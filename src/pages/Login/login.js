@@ -8,7 +8,6 @@ import "react-toastify/dist/ReactToastify.css";
 
 function Login(props) {
   console.log(UserData);
-  const {isLogin, username, role} = props.value
   console.log('Login', props.value['isLogin'])
   const navigate  = useNavigate();
   const handleSubmit = (e) => {
