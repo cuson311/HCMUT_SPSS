@@ -20,7 +20,7 @@ const PrintManage = (props) => {
 
   function handleOnchange(event) {
     event.preventDefault();
-    console.log(event.target.value);
+    console.log('evnet',inputState.input)
     setinputState({ input: event.target.value });
   }
   const [showModal, setShowModal] = useState(false);
@@ -92,7 +92,7 @@ const PrintManage = (props) => {
             <div className="h-fit"> 
               <div className="relative flex w-full flex-wrap items-stretch">
                 <input
-                  type="search"
+                  // type="search"
                   className="relative m-0 -mr-0.5 block min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:placeholder:text-neutral-200 dark:focus:border-primary"
                   placeholder="Search"
                   aria-label="Search"
@@ -121,11 +121,16 @@ const PrintManage = (props) => {
               Thêm máy in
             </Button>
           </div>
-            {data.length > 0 ? (
+            {data.filter((item) => item.brand_name && item.brand_name.toLowerCase().includes(inputState.input.toLowerCase())).length > 0 ? (
             <div className="grid grid-cols-4 mx-auto gap-3 mb-3">
               { 
                 data
-                .filter((item) => item.brand_name && item.brand_name.toLowerCase().includes(inputState.input.toLowerCase()))
+                .filter((item) => {
+                  const brandName = item.brand_name && item.brand_name.toLowerCase();
+                  const modelName = item.model_name && item.model_name.toLowerCase();
+                  const input = inputState.input.toLowerCase();
+                  return (brandName && brandName.includes(input)) || (modelName && modelName.includes(input));
+                })
                 .map((item, index) => <PrinterCard key={index} data={item} />)
               }
             </div>
@@ -134,7 +139,7 @@ const PrintManage = (props) => {
             )}
 
           {showModal && (
-            <div className="add_printer_model">
+            <div className="add_printer_model" >
               <div className="model_container">
                 <img
                   src={quit_logo}
@@ -142,7 +147,7 @@ const PrintManage = (props) => {
                   className="model_quit"
                   width={20}
                   height={20}
-                  onClick={() => setShowModal(false)}
+                  onClick={() => setShowModal(!showModal)}
                 />
                 <div className="modal_wrapper_add">
                   <h3>ADD PRINTER</h3>
