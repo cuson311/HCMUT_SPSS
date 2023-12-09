@@ -1,4 +1,5 @@
 import React from 'react';
+// import { Typography } from '@material-ui/core';
 import { Button } from "@material-tailwind/react";
 import { Input } from "@material-tailwind/react";
 import Box from '@mui/material/Box';
@@ -8,11 +9,19 @@ import NativeSelect from '@mui/material/NativeSelect';
 import './Properties.css'
 import {toast} from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
+import { useState } from 'react';
 
-
-export default function PropertiesPicker() {
+export default function PropertiesPicker(props) {
+    const numPages = parseInt(props.pageNum)
+    const [userPaper, setUserPaper] = useState (parseInt(props.props.value['paperNumber']))
     function handlePrintingSubmit() {
-        return toast.success("Đặt in thành công!")
+        if (numPages < userPaper) {
+            setUserPaper(userPaper - numPages);
+            return toast.success("Đặt in thành công!")
+        }
+        else {
+            return toast.warn("Vui lòng mua thêm giấy")
+        }
     }
     return (
     <form className="custom-options-form flex flex-wrap justify-center">
@@ -176,6 +185,16 @@ export default function PropertiesPicker() {
         </Box>
     </div>
     <div className="w-72" id="printbutton">
+    {numPages >= 0 && (
+        <>
+        <p className="text-center mt-2">
+            Số trang A4 yêu cầu: {numPages}
+        </p>
+        </>
+    )}
+    <p className="text-center mt-2">
+        Số giấy hiện có: {userPaper}
+    </p>
     <Button color="blue" onClick={(e)=>handlePrintingSubmit(e)} fullWidth>In Ngay</Button>
     </div>
     </form>

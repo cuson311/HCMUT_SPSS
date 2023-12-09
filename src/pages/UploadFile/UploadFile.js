@@ -20,10 +20,7 @@ export default function UploadPage(props) {
 
   const handleFileInputChange = (event) => {
     const file = event.target.files[0];
-    if (file.type === 'application/pdf' ||
-    file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
-    file.type === 'application/msword' ||
-    file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation'){
+    if (file.type === 'application/pdf'){
       toast.success("Tải lên thành công")
     }
     else {
@@ -40,9 +37,7 @@ export default function UploadPage(props) {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
     if (file.type === 'application/pdf' ||
-    file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
-    file.type === 'application/msword' ||
-    file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation'){
+    file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ){
       toast.success("Tải lên thành công")
     }
     else {
@@ -83,9 +78,6 @@ export default function UploadPage(props) {
               <input type='file' id='fileInput' style={{ display: 'none' }} onChange={handleFileInputChange} />
               <div style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'center' }}>
                 <img src={pdfLogo} alt="PDF" style={{ width: '64px', height: '64px' }}></img>
-                <img src={pptxLogo} alt="PPTX" style={{ width: '64px', height: '64px' }}></img>
-                <img src={docLogo} alt="DOC" style={{ width: '64px', height: '64px' }}></img>
-                <img src={docxLogo} alt="DOCX" style={{ width: '64px', height: '64px' }}></img>
               </div>
             </label>
           </div>
@@ -98,10 +90,7 @@ export default function UploadPage(props) {
                       className='rounded-lg'
                       style={{
                         border:
-                          file.type === 'application/pdf' ||
-                          file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
-                          file.type === 'application/msword' ||
-                          file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation'
+                          file.type === 'application/pdf'
                             ? '2px solid rgb(34,211,238)'
                             : '2px solid rgb(253,164,175)',
                         marginBottom: '10px',
@@ -111,10 +100,7 @@ export default function UploadPage(props) {
                     >
                       <li className='p-2' style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                             {file.name}
-                            {file.type === 'application/pdf' ||
-                            file.type === 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' ||
-                            file.type === 'application/msword' ||
-                            file.type === 'application/vnd.openxmlformats-officedocument.presentationml.presentation' ? (
+                            {file.type === 'application/pdf' ? (
                             <span style={{width:'100px'}}>
                               <Button fullWidth color='blue' size="sm" onClick={() => handlePrintingFile (file)}>In ngay</Button>
                             </span>

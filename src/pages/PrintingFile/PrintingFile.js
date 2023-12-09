@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import { Typography } from '@material-tailwind/react';
-import PrinterPicker from './PrinterPicker'
+import { Typography } from '@material-ui/core';
+import PrinterPicker from './PrinterPicker';
 import RequiredFile from '../../components/RequiredFile';
-import RequiredLogin from '../../components/RequiredLogin'
+import RequiredLogin from '../../components/RequiredLogin';
 import Box from '@mui/material/Box';
 import PropertiesPicker from './PropertiesPicker.js';
+import { pdfjs} from 'react-pdf';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `https://cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
+
 const PrintingFile = (props) => {
-    const file = props.value['printingFile']
-    return (
+  const file = props.value['printingFile'];
+  const [numPages, setNumPages] = useState(0);
+  useEffect(() => {
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function (event) {
+        const arrayBuffer = event.target.result;
+
+        pdfjs.getDocument(arrayBuffer).promise.then((pdf) => {
+          setNumPages(pdf.numPages);
+        });
+      };
+
+      reader.readAsArrayBuffer(file);
+    }
+  }, [file]);
+  console.log(numPages)
+  return (
     <> 
     <Header value={props}/>
         { props.value.isLogin === false ? (<RequiredLogin/>) : (
@@ -51,7 +72,7 @@ const PrintingFile = (props) => {
                                 {
                                 file ? (
                                     <div className='border bg-cyan-500 shadow-md shadow-cyan-500/20'>
-                                    <object data={URL.createObjectURL(file)} type={file.type} width="100%" height="600px">
+                                    <object data={URL.createObjectURL(file)} type={file.type} width="100%" height="450px">
                                         <p>Tệp tin không thể hiển thị, bạn có thể tải xuống bằng link sau</p>
                                         <a href={URL.createObjectURL(file)} download>Download file</a>
                                     </object>
@@ -70,11 +91,10 @@ const PrintingFile = (props) => {
                                     CHỌN THÔNG SỐ
                             </Typography>
                             <div className='bordershadow-md shadow-cyan-500/20 px-5'>
-                            <PropertiesPicker/>
+                            <PropertiesPicker pageNum={numPages} props={props}/>
                             </div>
                         </div>
                     </div>
-
                 ) : 
                 (
                     <RequiredFile/>
